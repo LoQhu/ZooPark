@@ -8,16 +8,32 @@ namespace ZooPark
         delegate List<IAnimal> ZooBuisness();
         static void Main(string[] args)
         {
+
             ZooBuisness doBizz = FillZoo;
             var zooAnimals = doBizz();
-
-            foreach(Animals x in zooAnimals)
+            var keeper = new ZooKeeper();
+            foreach (Animals x in zooAnimals)
             {
-                x.Speak();
-                x.Eat();
+                x.AnimalWakes += keeper.OnAnimalWakeUp;
                 x.Sleep();
                 Console.WriteLine("_____________________________________");
             }
+            //var animal1 = new Animals("Hog", "Oink", "barley and vegatbles", 8);
+            //var animal2 = new SeaAnimal("Orca", "WhooAA", "tasty fish", 5, 1);
+            //var animal3 = new LandAnimal("Tiger", "Roaaar!", "raw red meat", 4, 4);
+            //var animal4 = new AirAnimal("Hawk", "Sqreeee!", "chicken strips", 3, 2);
+            //var keeper = new ZooKeeper();
+
+            //animal1.AnimalWakes += keeper.OnAnimalWakeUp;
+            //animal2.AnimalWakes += keeper.OnAnimalWakeUp;
+            //animal3.AnimalWakes += keeper.OnAnimalWakeUp;
+            //animal4.AnimalWakes += keeper.OnAnimalWakeUp;
+
+            //animal1.Sleep();
+            //animal2.Sleep();
+            //animal3.Sleep();
+            //animal4.Sleep();
+
 
             #region Printsruff
             //land1.Eat();
@@ -66,6 +82,8 @@ namespace ZooPark
 
             li.Add(new AirAnimal("Raven", "Hello", "Nuts and small mammals", 6, 2));
             li.Add(new AirAnimal("Dragonfly", "Buzzz", "Leafs", 0, 4));
+            Console.WriteLine("Zoo filled !");
+            Console.WriteLine("________________________________________________");
 
             return li;
         }
